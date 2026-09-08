@@ -208,40 +208,33 @@ blockquote {
 
 ul,
 ol {
-	margin: 0 0 1.5em 2ch;
+	margin: 0 0 1.5em;
 	padding-left: 0;
 }
 
-/* Use a fixed marker gutter so bullets and numbers share one vertical axis. */
+/* Reserve two full-width character cells for markers at every list level. */
 #write ul > li:not(.md-task-list-item),
 #write ol > li {
 	position: relative;
 	list-style: none;
-}
-
-#write ul > li:not(.md-task-list-item) {
-	padding-left: 2.25ch;
-}
-
-#write ol > li {
-	padding-left: 2.5ch;
+	padding-left: 4ch;
 }
 
 #write ul > li:not(.md-task-list-item)::before,
 #write ol > li::before {
 	position: absolute;
 	left: 0;
-	width: 2ch;
 	color: var(--text-color);
 	font-variant-numeric: tabular-nums;
-	text-align: left;
 }
 
 #write ul > li:not(.md-task-list-item)::before {
 	content: "\2022";
 	top: -0.12em;
+	width: 2.3ch;
 	font-size: 1.5em;
 	line-height: 1.2;
+	text-align: right;
 }
 
 #write ul ul > li:not(.md-task-list-item)::before {
@@ -254,27 +247,17 @@ ol {
 
 #write ol > li::before {
 	content: counter(list-item) ".";
+	width: 3.25ch;
 	white-space: nowrap;
-}
-
-#write li ol > li {
-	padding-left: 3.5ch;
+	text-align: right;
 }
 
 #write li ol > li::before {
 	content: counter(list-item, lower-alpha) ".";
-	width: 3ch;
-	text-align: right;
-}
-
-#write li li ol > li {
-	padding-left: 4.5ch;
 }
 
 #write li li ol > li::before {
 	content: counter(list-item, lower-roman) ".";
-	width: 4ch;
-	text-align: right;
 }
 
 /* Tables share the same visual frame as fenced code blocks. */
@@ -760,7 +743,7 @@ tr:nth-child(even) {
 #typora-sidebar .outline-item-active > .outline-item {
 	color: var(--active-file-text-color);
 	background-color: var(--active-file-bg-color);
-	box-shadow: inset 2px 0 var(--active-file-border-color);
+	box-shadow: inset -2px 0 var(--active-file-border-color);
 }
 
 #typora-sidebar .outline-item.select {
@@ -837,7 +820,7 @@ tr:nth-child(even) {
 #typora-sidebar .file-tree-node.active > .file-node-content {
 	color: var(--active-file-text-color);
 	background-color: var(--active-file-bg-color);
-	box-shadow: inset 2px 0 var(--active-file-border-color);
+	box-shadow: inset -2px 0 var(--active-file-border-color);
 }
 
 #typora-sidebar .file-tree-node.active > .file-node-content .file-node-title-name-part {
@@ -871,7 +854,7 @@ tr:nth-child(even) {
 #typora-sidebar .file-list-item.active {
 	color: var(--active-file-text-color);
 	background-color: var(--active-file-bg-color);
-	box-shadow: inset 2px 0 var(--active-file-border-color);
+	box-shadow: inset -2px 0 var(--active-file-border-color);
 }
 
 #typora-sidebar .file-list-item.active .file-list-item-file-name {

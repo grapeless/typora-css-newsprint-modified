@@ -655,11 +655,11 @@ tr:nth-child(even) {
 	--sidebar-heading-color: #321f1d;
 	--control-text-color: #493735;
 	--control-text-hover-color: #2f1b1a;
-	--item-hover-bg-color: #e8e5de;
+	--item-hover-bg-color: #eae8e2;
 	--item-hover-text-color: var(--control-text-hover-color);
-	--active-file-bg-color: #e2ddd4;
+	--active-file-bg-color: #e7e3dc;
 	--active-file-text-color: #291615;
-	--active-file-border-color: var(--sidebar-accent-color);
+	--active-file-border-color: #b3a79b;
 	--primary-color: var(--sidebar-accent-color);
 	--window-border: 1px solid var(--sidebar-border-color);
 	color: var(--control-text-color);
@@ -760,7 +760,7 @@ tr:nth-child(even) {
 #typora-sidebar .outline-item-active > .outline-item {
 	color: var(--active-file-text-color);
 	background-color: var(--active-file-bg-color);
-	box-shadow: inset -2px 0 var(--active-file-border-color);
+	box-shadow: inset -1px 0 var(--active-file-border-color);
 }
 
 #typora-sidebar .outline-item.select {
@@ -771,16 +771,35 @@ tr:nth-child(even) {
 /* File tree keeps native indentation and uses one visual cue per state. */
 #typora-sidebar #file-library-tree {
 	padding-right: 8px;
-	padding-left: 8px;
+	padding-left: 0;
+}
+
+#typora-sidebar .file-tree-node {
+	padding-left: 18px;
+}
+
+#typora-sidebar .file-tree-node.file-node-root {
+	padding-left: 0;
 }
 
 #typora-sidebar .file-node-content {
 	position: relative;
+	display: flex;
+	align-items: flex-start;
+	margin-bottom: 1px;
 	padding-right: 16px;
+	line-height: 24px;
+}
+
+#typora-sidebar .file-node-title {
+	flex: 1;
+	min-width: 0;
+	line-height: 24px;
 }
 
 #typora-sidebar .file-node-root > .file-node-content {
 	margin-bottom: 7px;
+	padding-left: 8px;
 	padding-bottom: 8px;
 	color: var(--sidebar-heading-color);
 	border-bottom: 1px dashed var(--sidebar-border-color);
@@ -798,16 +817,58 @@ tr:nth-child(even) {
 #typora-sidebar .file-list-item-file-ext-part {
 	font-size: 0.9em;
 	font-weight: 400;
-	opacity: 0.52;
+	color: inherit;
+	opacity: 1;
 }
 
 #typora-sidebar .file-node-icon,
 #typora-sidebar .file-node-open-state {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	float: none;
+	height: 24px;
+	min-height: 24px;
+	line-height: 1;
 	color: var(--sidebar-muted-color);
+	text-align: center;
+}
+
+#typora-sidebar .file-node-open-state {
+	flex: 0 0 18px;
+	width: 18px;
+	margin-right: 2px;
+	font-size: 1.12em;
+}
+
+#typora-sidebar .file-node-collapsed > .file-node-content .fa-caret-right,
+#typora-sidebar .file-node-expanded > .file-node-content .fa-caret-down {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	line-height: 1;
+	transform: translateY(-1px);
 }
 
 #typora-sidebar .file-node-icon {
-	margin-right: 5px;
+	flex: 0 0 18px;
+	width: 18px;
+	margin-right: 4px;
+	font-size: 1.08em;
+}
+
+#typora-sidebar .file-node-open-state .fa-caret-right::before {
+	content: "\f105";
+}
+
+#typora-sidebar .file-node-open-state .fa-caret-down::before {
+	content: "\f107";
+}
+
+#typora-sidebar .file-node-expanded > .file-node-content .fa-caret-down {
+	margin-left: 0;
 }
 
 #typora-sidebar .file-node-icon.fa-folder::before {
@@ -817,6 +878,11 @@ tr:nth-child(even) {
 #typora-sidebar .file-node-icon.fa-folder-open::before,
 #typora-sidebar .file-node-expanded > .file-node-content .file-node-icon.fa-folder::before {
 	content: "\f115";
+}
+
+#typora-sidebar .file-node-icon.fa-file-text-o::before {
+	content: "\f006";
+	font-size: 0.84em;
 }
 
 #typora-sidebar .file-tree-node:not(.active):not(.file-node-root) > .file-node-content:hover {
@@ -837,7 +903,7 @@ tr:nth-child(even) {
 #typora-sidebar .file-tree-node.active > .file-node-content {
 	color: var(--active-file-text-color);
 	background-color: var(--active-file-bg-color);
-	box-shadow: inset -2px 0 var(--active-file-border-color);
+	box-shadow: inset -1px 0 var(--active-file-border-color);
 }
 
 #typora-sidebar .file-tree-node.active > .file-node-content .file-node-title-name-part {
@@ -871,7 +937,7 @@ tr:nth-child(even) {
 #typora-sidebar .file-list-item.active {
 	color: var(--active-file-text-color);
 	background-color: var(--active-file-bg-color);
-	box-shadow: inset -2px 0 var(--active-file-border-color);
+	box-shadow: inset -1px 0 var(--active-file-border-color);
 }
 
 #typora-sidebar .file-list-item.active .file-list-item-file-name {

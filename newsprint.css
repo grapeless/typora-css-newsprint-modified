@@ -55,8 +55,10 @@
 	--code-accent-color: #9b5146;
 	--code-selection-bg-color: #d8ccb8;
 	--inline-code-bg-color: #e4e1da;
-	--table-head-bg-color: #dfdcd4;
-	--table-stripe-bg-color: rgba(233, 231, 225, 0.62);
+	--table-border-color: #d3cdc2;
+	--table-accent-color: #9b7868;
+	--table-head-bg-color: #e7e2d9;
+	--table-stripe-bg-color: rgba(226, 222, 214, 0.38);
 
 	--select-text-bg-color: #d8ccb8;
 	--select-text-font-color: var(--text-color);
@@ -260,7 +262,7 @@ ol {
 	content: counter(list-item, lower-roman) ".";
 }
 
-/* Tables share the same visual frame as fenced code blocks. */
+/* Tables use a restrained ledger style instead of a card frame. */
 .md-meta,
 .md-before,
 .md-after {
@@ -270,15 +272,16 @@ ol {
 #write table {
 	width: 100%;
 	margin: 1.35em 0 2em;
-	border: 1px solid var(--code-border-color);
+	border: 0;
+	border-top: 2px solid var(--table-accent-color);
+	border-bottom: 1px solid var(--table-border-color);
 	border-collapse: separate;
 	border-spacing: 0;
-	border-radius: 8px;
-	background-color: rgba(255, 255, 255, 0.16);
-	box-shadow: 0 3px 10px rgba(48, 39, 31, 0.04);
-	font-size: 0.92em;
-	line-height: 1.55;
-	overflow: hidden;
+	border-radius: 0;
+	background-color: transparent;
+	box-shadow: none;
+	font-size: 0.9em;
+	line-height: 1.6;
 }
 
 #write table thead,
@@ -287,21 +290,35 @@ ol {
 }
 
 #write table th {
-	padding: 0.72em 0.9em;
+	padding: 0.72em 0.85em;
+	vertical-align: middle;
+	color: #3d2b28;
 	font-weight: 700;
 	text-align: left;
+	word-break: keep-all;
+	overflow-wrap: normal;
 }
 
 #write table td {
 	vertical-align: top;
-	padding: 0.68em 0.9em;
-	transition: background-color 0.15s ease;
+	padding: 0.68em 0.85em;
+	word-break: normal;
+	overflow-wrap: anywhere;
 }
 
 #write table th,
 #write table td {
-	border-right: 1px solid var(--code-border-color);
-	border-bottom: 1px solid var(--code-border-color);
+	border-right: 1px dashed var(--table-border-color);
+	border-bottom: 1px solid var(--table-border-color);
+}
+
+#write table thead th {
+	border-bottom-color: #bcaea2;
+}
+
+#write table tbody td:first-child {
+	color: #493431;
+	font-weight: 600;
 }
 
 #write table tbody tr:nth-child(even) {
@@ -309,7 +326,7 @@ ol {
 }
 
 #write table tbody tr:hover {
-	background-color: rgba(155, 81, 70, 0.07);
+	background-color: rgba(155, 120, 104, 0.08);
 }
 
 #write table tr:last-child > th,

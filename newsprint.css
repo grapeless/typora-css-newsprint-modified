@@ -55,10 +55,10 @@
 	--code-accent-color: #9b5146;
 	--code-selection-bg-color: #d8ccb8;
 	--inline-code-bg-color: #e4e1da;
-	--table-border-color: #d3cdc2;
-	--table-accent-color: #9b7868;
-	--table-head-bg-color: #e7e2d9;
-	--table-stripe-bg-color: rgba(226, 222, 214, 0.38);
+	--table-border-color: #dedbd4;
+	--table-accent-color: #cbc7bf;
+	--table-head-bg-color: #eeece7;
+	--table-stripe-bg-color: rgba(226, 222, 214, 0.18);
 
 	--select-text-bg-color: #d8ccb8;
 	--select-text-font-color: var(--text-color);
@@ -272,12 +272,12 @@ ol {
 #write table {
 	width: 100%;
 	margin: 1.35em 0 2em;
-	border: 0;
-	border-top: 2px solid var(--table-accent-color);
-	border-bottom: 1px solid var(--table-border-color);
+	border: 1px solid var(--table-border-color);
+	border-top: 1px solid var(--table-accent-color);
 	border-collapse: separate;
 	border-spacing: 0;
-	border-radius: 0;
+	border-radius: 6px;
+	overflow: hidden;
 	background-color: transparent;
 	box-shadow: none;
 	font-size: 0.9em;
@@ -313,7 +313,7 @@ ol {
 }
 
 #write table thead th {
-	border-bottom-color: #bcaea2;
+	border-bottom-color: var(--table-border-color);
 }
 
 #write table tbody td:first-child {
@@ -326,7 +326,7 @@ ol {
 }
 
 #write table tbody tr:hover {
-	background-color: rgba(155, 120, 104, 0.08);
+	background-color: rgba(130, 124, 113, 0.045);
 }
 
 #write table tr:last-child > th,

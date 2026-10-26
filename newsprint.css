@@ -243,8 +243,15 @@ ol {
 	content: "\25E6";
 }
 
+/* Draw a small square so the marker does not depend on the font's glyph. */
 #write ul ul ul > li:not(.md-task-list-item)::before {
-	content: "\25AA";
+	content: "";
+	top: 0.6em;
+	left: calc(3ch - 0.15em);
+	width: 0.3em;
+	height: 0.3em;
+	font-size: 1em;
+	background-color: currentColor;
 }
 
 #write ol > li::before {
@@ -271,6 +278,7 @@ ol {
 
 #write table {
 	width: 100%;
+	table-layout: auto;
 	margin: 1.35em 0 2em;
 	border: 1px solid var(--table-border-color);
 	border-top: 1px solid var(--table-accent-color);
@@ -290,7 +298,7 @@ ol {
 }
 
 #write table th {
-	padding: 0.72em 0.85em;
+	padding: 0.72em 0.6em;
 	vertical-align: middle;
 	color: #3d2b28;
 	font-weight: 700;
@@ -301,7 +309,7 @@ ol {
 
 #write table td {
 	vertical-align: top;
-	padding: 0.68em 0.85em;
+	padding: 0.68em 0.6em;
 	word-break: normal;
 	overflow-wrap: anywhere;
 }
@@ -310,6 +318,15 @@ ol {
 #write table td {
 	border-right: 1px dashed var(--table-border-color);
 	border-bottom: 1px solid var(--table-border-color);
+}
+
+/* Keep short rows readable; let wide tables and narrow screens fit naturally. */
+@media screen and (min-width: 768px) {
+	#write table tr > :first-child:nth-last-child(-n + 5),
+	#write table tr > :first-child:nth-last-child(-n + 5) ~ th,
+	#write table tr > :first-child:nth-last-child(-n + 5) ~ td {
+		min-width: 6em;
+	}
 }
 
 #write table thead th {
